@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(UnityEngine.Renderer);
-			Utils.BeginObjectRegister(type, L, translator, 0, 6, 26, 21);
+			Utils.BeginObjectRegister(type, L, translator, 0, 6, 27, 22);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "HasPropertyBlock", _m_HasPropertyBlock);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetPropertyBlock", _m_SetPropertyBlock);
@@ -40,6 +40,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "lightProbeUsage", _g_get_lightProbeUsage);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "reflectionProbeUsage", _g_get_reflectionProbeUsage);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "renderingLayerMask", _g_get_renderingLayerMask);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "rendererPriority", _g_get_rendererPriority);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "sortingLayerName", _g_get_sortingLayerName);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "sortingLayerID", _g_get_sortingLayerID);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "sortingOrder", _g_get_sortingOrder);
@@ -65,6 +66,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "lightProbeUsage", _s_set_lightProbeUsage);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "reflectionProbeUsage", _s_set_reflectionProbeUsage);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "renderingLayerMask", _s_set_renderingLayerMask);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "rendererPriority", _s_set_rendererPriority);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "sortingLayerName", _s_set_sortingLayerName);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "sortingLayerID", _s_set_sortingLayerID);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "sortingOrder", _s_set_sortingOrder);
@@ -452,6 +454,20 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_rendererPriority(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Renderer gen_to_be_invoked = (UnityEngine.Renderer)translator.FastGetCSObj(L, 1);
+                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.rendererPriority);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_sortingLayerName(RealStatePtr L)
         {
 		    try {
@@ -793,6 +809,21 @@ namespace XLua.CSObjectWrap
 			
                 UnityEngine.Renderer gen_to_be_invoked = (UnityEngine.Renderer)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.renderingLayerMask = LuaAPI.xlua_touint(L, 2);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_rendererPriority(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Renderer gen_to_be_invoked = (UnityEngine.Renderer)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.rendererPriority = LuaAPI.xlua_tointeger(L, 2);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

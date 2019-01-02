@@ -4,7 +4,7 @@ using UnityEngine;
 using XLua;
 /// <summary>
 /// C# call Lua  Table
-/// 方式一：
+/// 方式三：
 /// 映射到一个Dictionary<>或者List<>
 /// 
 /// 
@@ -12,7 +12,7 @@ using XLua;
 /// 
 /// 
 /// </summary>
-public class CallLuaByValue : MonoBehaviour 
+public class CallLuaTableByDicOrList : MonoBehaviour
 {
     LuaEnv env = null;
 
@@ -21,29 +21,27 @@ public class CallLuaByValue : MonoBehaviour
     {
         env = new LuaEnv();
         env.DoString("require'CSharpCallLua/CSharpCallLua'");
-        Dictionary<string, object>  m_dic= env.Global.Get<Dictionary<string, object>>("gameLanguage");
-        foreach (KeyValuePair<string,object> item in m_dic)
+        Dictionary<string, object> m_dic = env.Global.Get<Dictionary<string, object>>("gameLanguage");
+        Debug.Log("键值对Table输出如下：\n");
+        foreach (KeyValuePair<string, object> item in m_dic)
         {
-            Debug.Log(item.Key+"----"+ item.Value);
+            Debug.Log(item.Key + "----" + item.Value);
         }
 
 
         List<string> m_List = env.Global.Get<List<string>>("simplegameLanguage");
+        Debug.Log("简单Table输出如下：\n");
         foreach (var item in m_List)
         {
- Debug.Log( "----" + item);
+            Debug.Log("----" + item);
         }
-           
-        
-    }
-    /// 定义接口
 
-    [CSharpCallLua]
-    public interface IGameLanguage
-    {
-        string str1 { get; set; }
-        string str2 { get; set; }
-        string str3 { get; set; }
-        string str4 { get; set; }
+
     }
+
+    private void OnDestroy()
+    {
+        env.Dispose();
+    }
+
 }

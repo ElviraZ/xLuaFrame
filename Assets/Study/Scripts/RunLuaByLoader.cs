@@ -38,13 +38,13 @@ public class RunLuaByLoader : MonoBehaviour {
     /// 
     /// 用于自定义Lua文件路径
     /// </summary>
-    /// <param name="filepath"></param>
+    /// <param name="filepath">文件名称(文件的后缀是   .lua)</param>
     /// <returns></returns>
     private  byte[] CustomMyLoader(ref string fileName)
         {
         //定义lua路径
-        string luaPath = Application.dataPath + "/Scripts/Lua/" + fileName+".lua";
-        //读取lua文件内容
+        string luaPath = Application.dataPath + "/Study/Scripts/Lua/" + fileName+".lua";
+        //读取lua路径中指定文件的内容
         string strLuaContent = File.ReadAllText(luaPath);
 
 

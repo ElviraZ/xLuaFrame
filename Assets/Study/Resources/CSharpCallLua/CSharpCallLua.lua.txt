@@ -1,14 +1,16 @@
---测试CSharpCallLua
+﻿--测试CSharp调用Lua
 --定义全局变量
 str="全局变量"
+
  number=10
-   local     num=20
+local     num=20
    
    
-  --定义一个超级简单的table
+   
+  --定义一个数组形式的table
 simplegameLanguage={"C语言","C#语言","java语言","C++语言"} 
    
---定义一个简单的table
+--定义一个简单的键值对table
 gameLanguage={str1="C语言",str2="C#语言",str3="java语言",str4="C++语言"}
 
 
@@ -32,3 +34,35 @@ Calculaition=function(this,num1,num2)--说明：this表示当前对象,名字可
 
 
 }
+
+
+
+--定义单独的lua函数
+
+function   myProcFunc1()
+print("无参函数")
+end
+
+
+
+function   myProcFunc2(num1,num2)
+
+result=num1+num2
+print("两个参数函数带一个返回值==="..result)
+return     result
+end
+
+
+
+function   myProcFunc3(num1,num2,num3)
+print("三个参数函数num1+num2+num3===="..num1+num2+num3)
+end
+
+
+function   myProcFunc4(num1,num2)
+print("两个参数函数带一个返回值")
+result=num1+num2
+return     result,num1,num2
+end
+
+

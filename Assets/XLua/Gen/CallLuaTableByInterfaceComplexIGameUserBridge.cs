@@ -14,21 +14,134 @@ using System;
 
 namespace XLua.CSObjectWrap
 {
-    public class CallLuaByInterfaceIGameLanguageBridge : LuaBase, CallLuaByInterface.IGameLanguage
+    public class CallLuaTableByInterfaceComplexIGameUserBridge : LuaBase, CallLuaTableByInterfaceComplex.IGameUser
     {
 	    public static LuaBase __Create(int reference, LuaEnv luaenv)
 		{
-		    return new CallLuaByInterfaceIGameLanguageBridge(reference, luaenv);
+		    return new CallLuaTableByInterfaceComplexIGameUserBridge(reference, luaenv);
 		}
 		
-		public CallLuaByInterfaceIGameLanguageBridge(int reference, LuaEnv luaenv) : base(reference, luaenv)
+		public CallLuaTableByInterfaceComplexIGameUserBridge(int reference, LuaEnv luaenv) : base(reference, luaenv)
         {
         }
 		
+        
+		public void Speak()
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+				RealStatePtr L = luaEnv.L;
+				int err_func = LuaAPI.load_error_func(L, luaEnv.errorFuncRef);
+				
+				
+				LuaAPI.lua_getref(L, luaReference);
+				LuaAPI.xlua_pushasciistring(L, "Speak");
+				if (0 != LuaAPI.xlua_pgettable(L, -2))
+				{
+					luaEnv.ThrowExceptionFromError(err_func - 1);
+				}
+				if(!LuaAPI.lua_isfunction(L, -1))
+				{
+					LuaAPI.xlua_pushasciistring(L, "no such function Speak");
+					luaEnv.ThrowExceptionFromError(err_func - 1);
+				}
+				LuaAPI.lua_pushvalue(L, -2);
+				LuaAPI.lua_remove(L, -3);
+				
+				int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
+				if (__gen_error != 0)
+					luaEnv.ThrowExceptionFromError(err_func - 1);
+				
+				
+				
+				LuaAPI.lua_settop(L, err_func - 1);
+				
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
+        
+		public void Walking()
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+				RealStatePtr L = luaEnv.L;
+				int err_func = LuaAPI.load_error_func(L, luaEnv.errorFuncRef);
+				
+				
+				LuaAPI.lua_getref(L, luaReference);
+				LuaAPI.xlua_pushasciistring(L, "Walking");
+				if (0 != LuaAPI.xlua_pgettable(L, -2))
+				{
+					luaEnv.ThrowExceptionFromError(err_func - 1);
+				}
+				if(!LuaAPI.lua_isfunction(L, -1))
+				{
+					LuaAPI.xlua_pushasciistring(L, "no such function Walking");
+					luaEnv.ThrowExceptionFromError(err_func - 1);
+				}
+				LuaAPI.lua_pushvalue(L, -2);
+				LuaAPI.lua_remove(L, -3);
+				
+				int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
+				if (__gen_error != 0)
+					luaEnv.ThrowExceptionFromError(err_func - 1);
+				
+				
+				
+				LuaAPI.lua_settop(L, err_func - 1);
+				
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
+        
+		public int Calculaition(int num1, int num2)
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+				RealStatePtr L = luaEnv.L;
+				int err_func = LuaAPI.load_error_func(L, luaEnv.errorFuncRef);
+				
+				
+				LuaAPI.lua_getref(L, luaReference);
+				LuaAPI.xlua_pushasciistring(L, "Calculaition");
+				if (0 != LuaAPI.xlua_pgettable(L, -2))
+				{
+					luaEnv.ThrowExceptionFromError(err_func - 1);
+				}
+				if(!LuaAPI.lua_isfunction(L, -1))
+				{
+					LuaAPI.xlua_pushasciistring(L, "no such function Calculaition");
+					luaEnv.ThrowExceptionFromError(err_func - 1);
+				}
+				LuaAPI.lua_pushvalue(L, -2);
+				LuaAPI.lua_remove(L, -3);
+				LuaAPI.xlua_pushinteger(L, num1);
+				LuaAPI.xlua_pushinteger(L, num2);
+				
+				int __gen_error = LuaAPI.lua_pcall(L, 3, 1, err_func);
+				if (__gen_error != 0)
+					luaEnv.ThrowExceptionFromError(err_func - 1);
+				
+				
+				int __gen_ret = LuaAPI.xlua_tointeger(L, err_func + 1);
+				LuaAPI.lua_settop(L, err_func - 1);
+				return  __gen_ret;
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
         
 
         
-        public string str1 
+        public string name 
         {
             
             get 
@@ -41,7 +154,7 @@ namespace XLua.CSObjectWrap
 					int oldTop = LuaAPI.lua_gettop(L);
 					
 					LuaAPI.lua_getref(L, luaReference);
-					LuaAPI.xlua_pushasciistring(L, "str1");
+					LuaAPI.xlua_pushasciistring(L, "name");
 					if (0 != LuaAPI.xlua_pgettable(L, -2))
 					{
 						luaEnv.ThrowExceptionFromError(oldTop);
@@ -65,7 +178,7 @@ namespace XLua.CSObjectWrap
 					int oldTop = LuaAPI.lua_gettop(L);
 					
 					LuaAPI.lua_getref(L, luaReference);
-					LuaAPI.xlua_pushasciistring(L, "str1");
+					LuaAPI.xlua_pushasciistring(L, "name");
 					LuaAPI.lua_pushstring(L, value);
 					if (0 != LuaAPI.xlua_psettable(L, -3))
 					{
@@ -79,7 +192,7 @@ namespace XLua.CSObjectWrap
             
         }
         
-        public string str2 
+        public int age 
         {
             
             get 
@@ -92,12 +205,12 @@ namespace XLua.CSObjectWrap
 					int oldTop = LuaAPI.lua_gettop(L);
 					
 					LuaAPI.lua_getref(L, luaReference);
-					LuaAPI.xlua_pushasciistring(L, "str2");
+					LuaAPI.xlua_pushasciistring(L, "age");
 					if (0 != LuaAPI.xlua_pgettable(L, -2))
 					{
 						luaEnv.ThrowExceptionFromError(oldTop);
 					}
-					string __gen_ret = LuaAPI.lua_tostring(L, -1);
+					int __gen_ret = LuaAPI.xlua_tointeger(L, -1);
 					LuaAPI.lua_pop(L, 2);
 					return __gen_ret;
 #if THREAD_SAFE || HOTFIX_ENABLE
@@ -116,8 +229,8 @@ namespace XLua.CSObjectWrap
 					int oldTop = LuaAPI.lua_gettop(L);
 					
 					LuaAPI.lua_getref(L, luaReference);
-					LuaAPI.xlua_pushasciistring(L, "str2");
-					LuaAPI.lua_pushstring(L, value);
+					LuaAPI.xlua_pushasciistring(L, "age");
+					LuaAPI.xlua_pushinteger(L, value);
 					if (0 != LuaAPI.xlua_psettable(L, -3))
 					{
 						luaEnv.ThrowExceptionFromError(oldTop);
@@ -130,7 +243,7 @@ namespace XLua.CSObjectWrap
             
         }
         
-        public string str3 
+        public string ID 
         {
             
             get 
@@ -143,7 +256,7 @@ namespace XLua.CSObjectWrap
 					int oldTop = LuaAPI.lua_gettop(L);
 					
 					LuaAPI.lua_getref(L, luaReference);
-					LuaAPI.xlua_pushasciistring(L, "str3");
+					LuaAPI.xlua_pushasciistring(L, "ID");
 					if (0 != LuaAPI.xlua_pgettable(L, -2))
 					{
 						luaEnv.ThrowExceptionFromError(oldTop);
@@ -167,58 +280,7 @@ namespace XLua.CSObjectWrap
 					int oldTop = LuaAPI.lua_gettop(L);
 					
 					LuaAPI.lua_getref(L, luaReference);
-					LuaAPI.xlua_pushasciistring(L, "str3");
-					LuaAPI.lua_pushstring(L, value);
-					if (0 != LuaAPI.xlua_psettable(L, -3))
-					{
-						luaEnv.ThrowExceptionFromError(oldTop);
-					}
-					LuaAPI.lua_pop(L, 1);
-#if THREAD_SAFE || HOTFIX_ENABLE
-                }
-#endif
-            }
-            
-        }
-        
-        public string str4 
-        {
-            
-            get 
-            {
-#if THREAD_SAFE || HOTFIX_ENABLE
-                lock (luaEnv.luaEnvLock)
-                {
-#endif
-					RealStatePtr L = luaEnv.L;
-					int oldTop = LuaAPI.lua_gettop(L);
-					
-					LuaAPI.lua_getref(L, luaReference);
-					LuaAPI.xlua_pushasciistring(L, "str4");
-					if (0 != LuaAPI.xlua_pgettable(L, -2))
-					{
-						luaEnv.ThrowExceptionFromError(oldTop);
-					}
-					string __gen_ret = LuaAPI.lua_tostring(L, -1);
-					LuaAPI.lua_pop(L, 2);
-					return __gen_ret;
-#if THREAD_SAFE || HOTFIX_ENABLE
-                }
-#endif
-            }
-            
-            
-            set
-            {
-#if THREAD_SAFE || HOTFIX_ENABLE
-                lock (luaEnv.luaEnvLock)
-                {
-#endif
-					RealStatePtr L = luaEnv.L;
-					int oldTop = LuaAPI.lua_gettop(L);
-					
-					LuaAPI.lua_getref(L, luaReference);
-					LuaAPI.xlua_pushasciistring(L, "str4");
+					LuaAPI.xlua_pushasciistring(L, "ID");
 					LuaAPI.lua_pushstring(L, value);
 					if (0 != LuaAPI.xlua_psettable(L, -3))
 					{

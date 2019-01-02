@@ -4,7 +4,7 @@ using UnityEngine;
 using XLua;
 /// <summary>
 /// C# call Lua  Table
-/// 方式一：
+/// 方式二：
 /// 映射到一个interface(复杂版本)
 /// 引用拷贝
 /// 一般用于商业项目
@@ -12,7 +12,7 @@ using XLua;
 /// 1、添加    [CSharpCallLua]
 /// 2、编辑器生成目录
 /// </summary>
-public class CallLuaByInterfaceComplex : MonoBehaviour 
+public class CallLuaTableByInterfaceComplex : MonoBehaviour
 {
     LuaEnv env = null;
 
@@ -26,12 +26,12 @@ public class CallLuaByInterfaceComplex : MonoBehaviour
         Debug.Log("str1===" + gameUser.name);
         Debug.Log("str2===" + gameUser.age);
         Debug.Log("str3===" + gameUser.ID);
-      gameUser.Speak();
+        gameUser.Speak();
         gameUser.Walking();
-        Debug.Log(gameUser.Calculaition(100, 200)); 
+        Debug.Log(gameUser.Calculaition(100, 200));
     }
 
-  
+
     /// 定义接口
 
     [CSharpCallLua]
@@ -42,6 +42,6 @@ public class CallLuaByInterfaceComplex : MonoBehaviour
         string ID { get; set; }
         void Speak();
         void Walking();
-        int Calculaition(int  num1,int num2);
+        int Calculaition(int num1, int num2);
     }
 }

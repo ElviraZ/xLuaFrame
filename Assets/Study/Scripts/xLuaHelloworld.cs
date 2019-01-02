@@ -17,10 +17,7 @@ public class xLuaHelloworld : MonoBehaviour {
         env.DoString(str1Lua2);
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
     private void OnDisable()
     {
         env.Dispose();

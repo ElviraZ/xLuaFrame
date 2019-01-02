@@ -4,15 +4,15 @@ using UnityEngine;
 using XLua;
 /// <summary>
 /// C# call Lua  Table
-/// 方式一：
+/// 方式二：
 /// 映射到一个interface(简单版本)
 /// 引用拷贝
 /// 一般用于商业项目
 /// 注意：
-/// 1、添加    [CSharpCallLua]
-/// 2、编辑器生成目录
+/// 1、cs中接口必须添加    [CSharpCallLua]
+/// 2、编辑器必须点击  Generate  Code
 /// </summary>
-public class CallLuaByInterface : MonoBehaviour
+public class CallLuaTableByInterface : MonoBehaviour
 {
     LuaEnv env = null;
 
@@ -29,12 +29,12 @@ public class CallLuaByInterface : MonoBehaviour
         Debug.Log("str4===" + gameLanguage.str4);
         gameLanguage.str1 = "sdgdfghfhjg";
 
-        env.DoString("print('修改后的='..gameLanguage.str1)");
+        env.DoString("print('我修改后的='..gameLanguage.str1)");
 
     }
     /// 定义接口
     
-       [CSharpCallLua]
+   [CSharpCallLua]
     public interface IGameLanguage
     {
         string str1 { get; set; }

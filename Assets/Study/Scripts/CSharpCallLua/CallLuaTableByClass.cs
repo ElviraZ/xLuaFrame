@@ -8,7 +8,7 @@ using XLua;
 /// 使用class或者struct
 /// 注意:此方法是值拷贝，修改之一不会同步到另外一个
 /// </summary>
-public class CallLuaByClass : MonoBehaviour {
+public class CallLuaTableByClass : MonoBehaviour {
     LuaEnv env = null;
 
     // Use this for initialization
@@ -27,10 +27,6 @@ public class CallLuaByClass : MonoBehaviour {
         env.DoString("print('修改后的='..gameLanguage.str1)");
 
     }
-    // Update is called once per frame
-    void Update () {
-		
-	}
 
 
 

@@ -21,8 +21,9 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(UnityEngine.Light);
-			Utils.BeginObjectRegister(type, L, translator, 0, 7, 25, 24);
+			Utils.BeginObjectRegister(type, L, translator, 0, 8, 25, 24);
 			
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Reset", _m_Reset);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetLightDirty", _m_SetLightDirty);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AddCommandBuffer", _m_AddCommandBuffer);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AddCommandBufferAsync", _m_AddCommandBufferAsync);
@@ -32,15 +33,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetCommandBuffers", _m_GetCommandBuffers);
 			
 			
-			Utils.RegisterFunc(L, Utils.GETTER_IDX, "shadows", _g_get_shadows);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "shadowStrength", _g_get_shadowStrength);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "shadowResolution", _g_get_shadowResolution);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "layerShadowCullDistances", _g_get_layerShadowCullDistances);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "cookieSize", _g_get_cookieSize);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "cookie", _g_get_cookie);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "renderMode", _g_get_renderMode);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "commandBufferCount", _g_get_commandBufferCount);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "type", _g_get_type);
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "type", _g_get_type);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "spotAngle", _g_get_spotAngle);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "color", _g_get_color);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "colorTemperature", _g_get_colorTemperature);
@@ -57,15 +50,16 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "lightShadowCasterMode", _g_get_lightShadowCasterMode);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "shadowRadius", _g_get_shadowRadius);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "shadowAngle", _g_get_shadowAngle);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "shadows", _g_get_shadows);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "shadowStrength", _g_get_shadowStrength);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "shadowResolution", _g_get_shadowResolution);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "layerShadowCullDistances", _g_get_layerShadowCullDistances);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "cookieSize", _g_get_cookieSize);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "cookie", _g_get_cookie);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "renderMode", _g_get_renderMode);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "commandBufferCount", _g_get_commandBufferCount);
             
-			Utils.RegisterFunc(L, Utils.SETTER_IDX, "shadows", _s_set_shadows);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "shadowStrength", _s_set_shadowStrength);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "shadowResolution", _s_set_shadowResolution);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "layerShadowCullDistances", _s_set_layerShadowCullDistances);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "cookieSize", _s_set_cookieSize);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "cookie", _s_set_cookie);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "renderMode", _s_set_renderMode);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "type", _s_set_type);
+			Utils.RegisterFunc(L, Utils.SETTER_IDX, "type", _s_set_type);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "spotAngle", _s_set_spotAngle);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "color", _s_set_color);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "colorTemperature", _s_set_colorTemperature);
@@ -82,6 +76,13 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "lightShadowCasterMode", _s_set_lightShadowCasterMode);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "shadowRadius", _s_set_shadowRadius);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "shadowAngle", _s_set_shadowAngle);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "shadows", _s_set_shadows);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "shadowStrength", _s_set_shadowStrength);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "shadowResolution", _s_set_shadowResolution);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "layerShadowCullDistances", _s_set_layerShadowCullDistances);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "cookieSize", _s_set_cookieSize);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "cookie", _s_set_cookie);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "renderMode", _s_set_renderMode);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
@@ -127,6 +128,33 @@ namespace XLua.CSObjectWrap
         
         
         
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Reset(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked.Reset(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_SetLightDirty(RealStatePtr L)
@@ -392,118 +420,6 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_shadows(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.shadows);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_shadowStrength(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushnumber(L, gen_to_be_invoked.shadowStrength);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_shadowResolution(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.shadowResolution);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_layerShadowCullDistances(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.layerShadowCullDistances);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_cookieSize(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushnumber(L, gen_to_be_invoked.cookieSize);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_cookie(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.cookie);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_renderMode(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.renderMode);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_commandBufferCount(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.commandBufferCount);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_type(RealStatePtr L)
         {
 		    try {
@@ -741,115 +657,119 @@ namespace XLua.CSObjectWrap
             return 1;
         }
         
-        
-        
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_shadows(RealStatePtr L)
+        static int _g_get_shadows(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                UnityEngine.LightShadows gen_value;translator.Get(L, 2, out gen_value);
-				gen_to_be_invoked.shadows = gen_value;
-            
+                translator.Push(L, gen_to_be_invoked.shadows);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
-            return 0;
+            return 1;
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_shadowStrength(RealStatePtr L)
+        static int _g_get_shadowStrength(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.shadowStrength = (float)LuaAPI.lua_tonumber(L, 2);
-            
+                LuaAPI.lua_pushnumber(L, gen_to_be_invoked.shadowStrength);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
-            return 0;
+            return 1;
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_shadowResolution(RealStatePtr L)
+        static int _g_get_shadowResolution(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                UnityEngine.Rendering.LightShadowResolution gen_value;translator.Get(L, 2, out gen_value);
-				gen_to_be_invoked.shadowResolution = gen_value;
-            
+                translator.Push(L, gen_to_be_invoked.shadowResolution);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
-            return 0;
+            return 1;
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_layerShadowCullDistances(RealStatePtr L)
+        static int _g_get_layerShadowCullDistances(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.layerShadowCullDistances = (float[])translator.GetObject(L, 2, typeof(float[]));
-            
+                translator.Push(L, gen_to_be_invoked.layerShadowCullDistances);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
-            return 0;
+            return 1;
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_cookieSize(RealStatePtr L)
+        static int _g_get_cookieSize(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.cookieSize = (float)LuaAPI.lua_tonumber(L, 2);
-            
+                LuaAPI.lua_pushnumber(L, gen_to_be_invoked.cookieSize);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
-            return 0;
+            return 1;
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_cookie(RealStatePtr L)
+        static int _g_get_cookie(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.cookie = (UnityEngine.Texture)translator.GetObject(L, 2, typeof(UnityEngine.Texture));
-            
+                translator.Push(L, gen_to_be_invoked.cookie);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
-            return 0;
+            return 1;
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_renderMode(RealStatePtr L)
+        static int _g_get_renderMode(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
-                UnityEngine.LightRenderMode gen_value;translator.Get(L, 2, out gen_value);
-				gen_to_be_invoked.renderMode = gen_value;
-            
+                translator.Push(L, gen_to_be_invoked.renderMode);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
-            return 0;
+            return 1;
         }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_commandBufferCount(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
+                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.commandBufferCount);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _s_set_type(RealStatePtr L)
@@ -1103,6 +1023,114 @@ namespace XLua.CSObjectWrap
 			
                 UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.shadowAngle = (float)LuaAPI.lua_tonumber(L, 2);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_shadows(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
+                UnityEngine.LightShadows gen_value;translator.Get(L, 2, out gen_value);
+				gen_to_be_invoked.shadows = gen_value;
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_shadowStrength(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.shadowStrength = (float)LuaAPI.lua_tonumber(L, 2);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_shadowResolution(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
+                UnityEngine.Rendering.LightShadowResolution gen_value;translator.Get(L, 2, out gen_value);
+				gen_to_be_invoked.shadowResolution = gen_value;
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_layerShadowCullDistances(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.layerShadowCullDistances = (float[])translator.GetObject(L, 2, typeof(float[]));
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_cookieSize(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.cookieSize = (float)LuaAPI.lua_tonumber(L, 2);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_cookie(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.cookie = (UnityEngine.Texture)translator.GetObject(L, 2, typeof(UnityEngine.Texture));
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_renderMode(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UnityEngine.Light gen_to_be_invoked = (UnityEngine.Light)translator.FastGetCSObj(L, 1);
+                UnityEngine.LightRenderMode gen_value;translator.Get(L, 2, out gen_value);
+				gen_to_be_invoked.renderMode = gen_value;
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

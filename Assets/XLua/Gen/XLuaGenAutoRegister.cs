@@ -40,9 +40,6 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(UnityEngine.WaitForSeconds), UnityEngineWaitForSecondsWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(UnityEngine.WWW), UnityEngineWWWWrap.__Register);
-        
-        
             translator.DelayWrapLoader(typeof(BaseTest), BaseTestWrap.__Register);
         
         
@@ -178,9 +175,9 @@ namespace XLua.CSObjectWrap
             wrapInit0(luaenv, translator);
             
             
-            translator.AddInterfaceBridgeCreator(typeof(CallLuaByInterface.IGameLanguage), CallLuaByInterfaceIGameLanguageBridge.__Create);
+            translator.AddInterfaceBridgeCreator(typeof(CallLuaTableByInterface.IGameLanguage), CallLuaTableByInterfaceIGameLanguageBridge.__Create);
             
-            translator.AddInterfaceBridgeCreator(typeof(CallLuaByInterfaceComplex.IGameUser), CallLuaByInterfaceComplexIGameUserBridge.__Create);
+            translator.AddInterfaceBridgeCreator(typeof(CallLuaTableByInterfaceComplex.IGameUser), CallLuaTableByInterfaceComplexIGameUserBridge.__Create);
             
             translator.AddInterfaceBridgeCreator(typeof(InvokeLua.ICalc), InvokeLuaICalcBridge.__Create);
             
