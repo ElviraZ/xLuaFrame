@@ -1,0 +1,37 @@
+﻿--演示详细   Lua调用C# 的各种特性
+
+
+print("测试是否正确加载")
+
+
+--[[一、新建一个对象]]--
+--1、实例化一个Unity对象
+local   newGameObj=CS.UnityEngine.GameObject()
+newGameObj.name="NewGo"
+
+--2、查找游戏物体
+--lua访问Unity中 的静态属性与方法
+local  txtGo=CS.UnityEngine.GameObject.Find("Text_Logo")
+--txtGo.name="Modify Name"
+
+--3、得到对象上的组件，学习使用冒号与句号
+local   txtLogo=txtGo:GetComponent("UnityEngine.UI.Text")
+txtLogo.text="公告系统"
+
+
+
+
+
+
+
+
+
+
+
+
+--[[二、Lua调用自定义的C#脚本]]--
+--
+
+
+
+
