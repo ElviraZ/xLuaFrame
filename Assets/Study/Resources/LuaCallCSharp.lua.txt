@@ -30,8 +30,30 @@ txtLogo.text="公告系统"
 
 
 --[[二、Lua调用自定义的C#脚本]]--
---
+local      child=CS.xLuaStudy.ChildClass		
+
+local  classObj=child()											--自动调用父类和子类的构造函数（先父类后子类）
 
 
+
+
+--调用方法
+--使用 ：  表示对成员方法的调用，自动完成把当前对象作为一个参数传入方法
+--使用   .    表示多静态属性与方法的调用，需要手动往方法中传递对象
+ classObj:ShowChildInfo()
+-- classObj.ShowChildInfo()               --语法错误
+  classObj.ShowChildInfo(classObj)
+    print(classObj.childClassName)
+
+
+  --调用父类的字段与方法
+  classObj:ShowFatherInfo()
+  print(classObj.fatherClassName)
+  classObj:Method2(10,20)					--对于C#的参数类型的不同的重载是按定义顺序来匹配调用
+  classObj:Method2("100","50")
+
+
+
+    classObj:Method3(5,"50","Hello")
 
 
