@@ -22,6 +22,12 @@ namespace XLua.CSObjectWrap
         static void wrapInit0(LuaEnv luaenv, ObjectTranslator translator)
         {
         
+            translator.DelayWrapLoader(typeof(xLuaStudy.Extension_MyGeneric), xLuaStudyExtension_MyGenericWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(xLuaStudy.MyGeneric), xLuaStudyMyGenericWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(LuaBehaviour), LuaBehaviourWrap.__Register);
         
         
@@ -178,6 +184,8 @@ namespace XLua.CSObjectWrap
             translator.AddInterfaceBridgeCreator(typeof(CallLuaTableByInterface.IGameLanguage), CallLuaTableByInterfaceIGameLanguageBridge.__Create);
             
             translator.AddInterfaceBridgeCreator(typeof(CallLuaTableByInterfaceComplex.IGameUser), CallLuaTableByInterfaceComplexIGameUserBridge.__Create);
+            
+            translator.AddInterfaceBridgeCreator(typeof(xLuaStudy.MyInterface), xLuaStudyMyInterfaceBridge.__Create);
             
             translator.AddInterfaceBridgeCreator(typeof(InvokeLua.ICalc), InvokeLuaICalcBridge.__Create);
             

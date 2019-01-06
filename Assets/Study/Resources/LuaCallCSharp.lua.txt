@@ -57,3 +57,75 @@ local  classObj=child()											--自动调用父类和子类的构造函数�
     classObj:Method3(5,"50","Hello")
 
 
+
+	--测试调用C#中的结构体参数的方法
+	--定义一个表来映射结构体
+	myStructTable={x="C#语言",y="C++语言"}
+	classObj:Method4(myStructTable)
+
+	
+	--测试调用C#中的参数为接口的方法
+	--定义一个表来映射结构体
+	myInterfaceTable={
+	x=1000,
+	y=30,
+	
+	Speak=function()
+	print("Lua中说话方法")
+				end
+	}
+	classObj:Method5(myInterfaceTable)
+
+
+
+--测试调用C#中的参数为委托的方法
+--定义一个表来映射结构体
+	myDelegate=function(num)
+		print("Lua中委托方法"..num)
+	end
+
+
+	classObj:Method6(myDelegate)
+
+	--测试调用C#中的多返回值的方法
+local  num1=10
+local  num3=20
+
+
+--C#方法中普通参数算一个输入参数，ref算一个输入参数，out参数则不算输入参数，参数各种从左到右顺序调用
+--返回值中普通参数，out  和ref都算返回值
+local  res1,res2,res3=	classObj:Method7(num1,num3)
+	print("res1==="..res1)							--输出：110
+	print("res2==="..res2)							--输出：3000	
+	print("res3==="..res3)							--输出：999
+
+
+
+	--调用普通的参数为泛型的方法
+	myList={"c","c++","c#"}
+	classObj:Method8(myList)
+
+
+
+
+
+	--调用其他自定义的C#脚本的中的泛型方法
+	classObj:Method9()
+
+
+
+
+	--直接调用C#的泛型类方法
+--local  maxNum=	CS.xLuaStudy.MyGeneric:Get<int>(20,30)						--直接就在 <> 处语法错误
+--print(maxNum)
+
+
+	--调用其他自定义的C#脚本的中的泛型方法
+	classObj:Method10()
+
+
+	local  maxNum=	CS.xLuaStudy.MyGeneric():ExtGetMax(88,66)
+	print(maxNum);
+
+
+
