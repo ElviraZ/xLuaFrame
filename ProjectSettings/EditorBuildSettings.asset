@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/ElviraFrame/LuaFrame/TestProject/HotFixProject.unity
+    guid: fa8a002f63af8e54283c8b1faac88924
   m_configObjects: {}

@@ -26,7 +26,7 @@ namespace XLua.CSObjectWrap
         }
 		
         
-		public bool MoveNext()
+		bool System.Collections.IEnumerator.MoveNext()
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -63,7 +63,7 @@ namespace XLua.CSObjectWrap
 #endif
 		}
         
-		public void Reset()
+		void System.Collections.IEnumerator.Reset()
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -102,7 +102,7 @@ namespace XLua.CSObjectWrap
         
 
         
-        public object Current 
+        object System.Collections.IEnumerator.Current 
         {
             
             get 

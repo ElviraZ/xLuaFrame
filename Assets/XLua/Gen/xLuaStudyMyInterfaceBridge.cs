@@ -26,7 +26,7 @@ namespace XLua.CSObjectWrap
         }
 		
         
-		public void Speak()
+		void xLuaStudy.MyInterface.Speak()
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -65,7 +65,7 @@ namespace XLua.CSObjectWrap
         
 
         
-        public int x 
+        int xLuaStudy.MyInterface.x 
         {
             
             get 
@@ -116,7 +116,7 @@ namespace XLua.CSObjectWrap
             
         }
         
-        public int y 
+        int xLuaStudy.MyInterface.y 
         {
             
             get 

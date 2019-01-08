@@ -28,7 +28,7 @@ namespace XLua.CSObjectWrap
         
 
         
-        public string str1 
+        string CallLuaTableByInterface.IGameLanguage.str1 
         {
             
             get 
@@ -79,7 +79,7 @@ namespace XLua.CSObjectWrap
             
         }
         
-        public string str2 
+        string CallLuaTableByInterface.IGameLanguage.str2 
         {
             
             get 
@@ -130,7 +130,7 @@ namespace XLua.CSObjectWrap
             
         }
         
-        public string str3 
+        string CallLuaTableByInterface.IGameLanguage.str3 
         {
             
             get 
@@ -181,7 +181,7 @@ namespace XLua.CSObjectWrap
             
         }
         
-        public string str4 
+        string CallLuaTableByInterface.IGameLanguage.str4 
         {
             
             get 

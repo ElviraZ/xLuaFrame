@@ -57,8 +57,6 @@ public static class ExampleGenConfig
                 typeof(Action),
                 typeof(Func<double, double, double>),
                 typeof(Action<string>),
-                 typeof(Action<int, int, int>), 
-          typeof(Func<int, int, int>),
                 typeof(Action<double>),
                 typeof(UnityEngine.Events.UnityAction),
                 typeof(System.Collections.IEnumerator)

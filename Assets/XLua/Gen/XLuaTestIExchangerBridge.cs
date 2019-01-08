@@ -26,7 +26,7 @@ namespace XLua.CSObjectWrap
         }
 		
         
-		public void exchange(System.Array arr)
+		void XLuaTest.IExchanger.exchange(System.Array arr)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)

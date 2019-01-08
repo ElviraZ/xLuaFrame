@@ -26,7 +26,7 @@ namespace XLua.CSObjectWrap
         }
 		
         
-		public int Add(int a, int b)
+		int InvokeLua.ICalc.Add(int a, int b)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -67,7 +67,7 @@ namespace XLua.CSObjectWrap
         
 
         
-        public int Mult 
+        int InvokeLua.ICalc.Mult 
         {
             
             get 
@@ -120,7 +120,7 @@ namespace XLua.CSObjectWrap
         
         
         
-		public event System.EventHandler<PropertyChangedEventArgs> PropertyChanged
+		event System.EventHandler<PropertyChangedEventArgs> InvokeLua.ICalc.PropertyChanged
 		{
 			add
 			{
@@ -195,7 +195,7 @@ namespace XLua.CSObjectWrap
         
 		
 		
-        public object this[int index]
+        object InvokeLua.ICalc.this[int index]
 		{
 		    get
 			{

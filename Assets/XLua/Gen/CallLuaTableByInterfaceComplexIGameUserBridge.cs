@@ -26,7 +26,7 @@ namespace XLua.CSObjectWrap
         }
 		
         
-		public void Speak()
+		void CallLuaTableByInterfaceComplex.IGameUser.Speak()
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -63,7 +63,7 @@ namespace XLua.CSObjectWrap
 #endif
 		}
         
-		public void Walking()
+		void CallLuaTableByInterfaceComplex.IGameUser.Walking()
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -100,7 +100,7 @@ namespace XLua.CSObjectWrap
 #endif
 		}
         
-		public int Calculaition(int num1, int num2)
+		int CallLuaTableByInterfaceComplex.IGameUser.Calculaition(int num1, int num2)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -141,7 +141,7 @@ namespace XLua.CSObjectWrap
         
 
         
-        public string name 
+        string CallLuaTableByInterfaceComplex.IGameUser.name 
         {
             
             get 
@@ -192,7 +192,7 @@ namespace XLua.CSObjectWrap
             
         }
         
-        public int age 
+        int CallLuaTableByInterfaceComplex.IGameUser.age 
         {
             
             get 
@@ -243,7 +243,7 @@ namespace XLua.CSObjectWrap
             
         }
         
-        public string ID 
+        string CallLuaTableByInterfaceComplex.IGameUser.ID 
         {
             
             get 

@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 797095684
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: mainscenes/ui.ab
+      Dependencies: {}

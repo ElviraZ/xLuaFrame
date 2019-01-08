@@ -26,7 +26,7 @@ namespace XLua.CSObjectWrap
         }
 		
         
-		public int add(int a, int b)
+		int CSCallLua.ItfD.add(int a, int b)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -67,7 +67,7 @@ namespace XLua.CSObjectWrap
         
 
         
-        public int f1 
+        int CSCallLua.ItfD.f1 
         {
             
             get 
@@ -118,7 +118,7 @@ namespace XLua.CSObjectWrap
             
         }
         
-        public int f2 
+        int CSCallLua.ItfD.f2 
         {
             
             get 
