@@ -15,6 +15,7 @@ public class SignatureLoaderTest : MonoBehaviour {
             filepath = Application.dataPath + "/XLua/Examples/10_SignatureLoader/" + filepath.Replace('.', '/') + ".lua";
             if (File.Exists(filepath))
             {
+                Debug.Log(filepath);
                 return File.ReadAllBytes(filepath);
             }
             else
@@ -37,10 +38,7 @@ public class SignatureLoaderTest : MonoBehaviour {
             }
         }));
 #endif
-        luaenv.DoString(@"
-            require 'signatured1'
-            require 'signatured2'
-        ");
+        luaenv.DoString(@"   require 'signatured1'  require 'signatured2' ");
         luaenv.Dispose();
     }
 	

@@ -29,6 +29,7 @@ public class RunLuaByLoader : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+  
         env = new LuaEnv();
         env.AddLoader(CustomMyLoader);
         env.DoString("require'CustomLuaFile'");
@@ -45,11 +46,14 @@ public class RunLuaByLoader : MonoBehaviour {
         //定义lua路径
         string luaPath = Application.dataPath + "/Study/Scripts/Lua/" + fileName+".lua";
         //读取lua路径中指定文件的内容
-        string strLuaContent = File.ReadAllText(luaPath);
+        string strLuaContent =Elvira.Helper.DES.AESDecrypt( File.ReadAllText(luaPath));
 
 
         //数据类型转换
-        byte[] array = System.Text.Encoding.UTF8.GetBytes(strLuaContent);
+       byte[] array = System.Text.Encoding.UTF8.GetBytes(strLuaContent);
+
+     
+    
         return array;
 
     }

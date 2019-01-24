@@ -134,7 +134,9 @@ namespace HotUpdateModel
                         continue;
                     }
                     //读取lua文件内容字节信息
-                    byte[] bytes = File.ReadAllBytes(fileInfo.FullName);
+                    byte[] bytes   = System.Text.Encoding.UTF8.GetBytes(Elvira.Helper.DES.AESDecrypt(File.ReadAllText(fileInfo.FullName)));
+            
+            
                     //添加到缓存集合中
                     _DicLuaFileArray.Add(fileName,bytes);
                     return bytes;
